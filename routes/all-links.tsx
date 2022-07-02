@@ -5,9 +5,9 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 
 export const handler: Handlers<Project> = {
   async GET(__req, ctx) {
-    // get our data
     const rawLinks = fetch("");
     const links = await (await rawLinks).json()
+
     return ctx.render(links.records);
   }
 }
