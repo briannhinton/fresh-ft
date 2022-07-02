@@ -177,7 +177,7 @@ export default function Home(props: PageProps) {
         </section>
       </main>
       <footer class={tw`flex justify-center w-full py-12 bg-[#FFFCF2]`}>
-        <p class={tw`max-w-5xl mx-auto`}>FigmaLinks is maintained by <a class={tw`underline`} href="https://realtinypenguin.com">Brian Hinton</a>.</p>
+        <p class={tw`max-w-5xl mx-auto`}><span class={tw`uppercase`}>FigmaLinks</span> is maintained by <a class={tw`underline`} href="https://realtinypenguin.com">Brian Hinton</a>.</p>
       </footer>
     </Fragment>
   );
