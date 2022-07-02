@@ -54,12 +54,14 @@ export default function Home(props: PageProps) {
                 background-position: top left;
                 background-size: 100% 100%;
                 background-repeat: no-repeat;">
-                  <ul class={tw`flex gap-3`}>
-                    {link.fields.type.map(type => (
-                      <li class={tw`uppercase text-xs font-extrabold text-[#2D67BE] mb-4`}>{type}</li>
-                    ))}
+                  <ul class={tw`flex gap-1`}>
+                    {link.fields.type.map((type, index, arr) => {
+                      console.log(type, index === arr.length - 1);
+                      return index === arr.length - 1 
+                      ? <li class={tw`uppercase text-xs font-extrabold text-[#2D67BE] mb-4`}>{type}</li> 
+                      : <li class={tw`uppercase text-xs font-extrabold text-[#2D67BE] mb-4`}>{type},</li>
+                    })}
                   </ul>
-                
                   <h3 class={tw`text-2xl text-gray-800 mb-2`}>{link.fields.linkTitle}</h3>
                   <a class={tw`text-xs uppercase mb-2 inline-block hover:underline`} href={link.fields.authorUrl}>by {link.fields.author}</a>
                   <p class={tw`text-gray-500 mb-4`}>{link.fields.linkDesc}</p>
