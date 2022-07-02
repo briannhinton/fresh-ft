@@ -7,11 +7,11 @@ export const handler: Handlers<Project> = {
   async GET(__req, ctx) {
     const rawLinks = fetch("");
     const links = await (await rawLinks).json()
-    
+
     return ctx.render(links.records);
   }
 }
-
+// TODO: border right on main container
 export default function Home(props: PageProps) {
   console.log(props.data)
   const sliceLink = props.data.slice(0, 6);
@@ -27,17 +27,15 @@ export default function Home(props: PageProps) {
             <li><a href="/" aria-current="page" class={tw`font-bold hover:underline`}>Home</a></li>
             <li><a href="/all-links" class={tw`hover:underline`}>All Links</a></li>
           </ul>
-          <p class={tw`hidden sm:inline-block`}>Made with <span class={tw`sr-only`}>love</span> <img src="/love.svg" class={tw`w-6 h-6 inline`} alt=""/> in Florida.</p>
+          <p class={tw`hidden sm:inline-block`}>Made with <span class={tw`sr-only`}>love</span> <img src="/icon-heart.svg" class={tw`w-6 h-6 inline`} alt=""/> in Florida.</p>
         </nav>
         <section class={tw`max-w-5xl mx-auto flex mb-20`}>
           <div>
           <h2 class={tw`my-6 text-6xl max-w-md`}>
-            Browse Figma bookmarks for education, presentation, meetups and more.
+            Browse Figma bookmarks on education, presentation, meetups and more.
           </h2>
-          <a class={tw`text-2xl underline relative`} href="#recent">
-            Start Exploring <span class={tw`absolute -top-1`}><svg class={tw`inline`} aria-hidden="true" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M17.3333 16H26.6666L15.9999 26.6667L5.33325 16H14.6666V5.33337H17.3333V16Z" fill="#151414"/>
-</svg></span>
+          <a class={tw`text-2xl underline flex gap-x-1 items-center`} href="#recent">
+            Start Exploring <img src="/icon-down-arrow.svg" class={tw`inline w-9 h-9`} alt="" aria-hidden="true"/>
           </a>
           </div>
           <img src="/heroillustration.svg" class={tw`hidden sm:block`}></img>
@@ -48,7 +46,7 @@ export default function Home(props: PageProps) {
           <h2 id="recent" class={tw`text-3xl mb-2`}>Recently Added</h2>
           <p class={tw`uppercase text-xs mb-4`}>
             Last updated <time dateTime="2022-07-04T19:00">July 4, 2022</time>.</p>
-          <div class={tw`w-full flex flex-wrap`}>
+          <div class={tw`w-full flex flex-wrap overflow-hidden border-r-4 border-gray-900`}>
             {sliceLink.map(link => {
               return (
                 <article class={tw`border-4 border-gray-900 px-6 pt-9 pb-12 -mr-1 -mb-1 w-full sm:w-[calc(50%+0.25rem)] lg:w-[calc(33.333333%+0.25rem)]`} data-key={link.id}
@@ -56,15 +54,20 @@ export default function Home(props: PageProps) {
                 background-position: top left;
                 background-size: 100% 100%;
                 background-repeat: no-repeat;">
-                  <p class={tw`uppercase text-xs font-extrabold text-[#2D67BE] mb-4`}>{link.fields.type}</p>
+                  <ul class={tw`flex gap-3`}>
+                    {link.fields.type.map(type => (
+                      <li class={tw`uppercase text-xs font-extrabold text-[#2D67BE] mb-4`}>{type}</li>
+                    ))}
+                  </ul>
+                
                   <h3 class={tw`text-2xl text-gray-800 mb-2`}>{link.fields.linkTitle}</h3>
                   <a class={tw`text-xs uppercase mb-2 inline-block hover:underline`} href={link.fields.authorUrl}>by {link.fields.author}</a>
                   <p class={tw`text-gray-500 mb-4`}>{link.fields.linkDesc}</p>
-                  <a class={tw `underline`} href={link.fields.linkUrl}>Download</a>
+                  <a class={tw`underline`} href={link.fields.linkUrl}>Download</a>
                 </article>
               )
             })}
-            <a href="/all-links" class={tw`w-[calc(100%+0.25rem)] border-4 border-gray-900 py-6 flex justify-center cursor-pointer bg-[#fafafa] hover:bg-white`}>
+            <a href="/all-links" class={tw`grow w-full border-4 border-gray-900 py-6 flex justify-center cursor-pointer bg-[#fafafa] hover:bg-white`}>
               <span class={tw`underline text-2xl`}>Browse All</span>
             </a>  
           </div>

@@ -23,7 +23,7 @@ export default function Home(props: PageProps) {
             <li><a href="/" class={tw`hover:underline`}>Home</a></li>
             <li><a href="/" aria-current="page" class={tw`font-bold hover:underline`}>All Links</a></li>
           </ul>
-          <p class={tw`hidden sm:inline-block`}>Made with <span class={tw`sr-only`}>love</span> <img src="/love.svg" class={tw`w-6 h-6 inline`} alt=""/> in Florida.</p>
+          <p class={tw`hidden sm:inline-block`}>Made with <span class={tw`sr-only`}>love</span> <img src="/icon-heart.svg" class={tw`w-6 h-6 inline`} alt=""/> in Florida.</p>
         </nav>
       </div>
       <main class={tw`w-full pt-20 bg-[#FFFCF2]`}>
