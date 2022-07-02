@@ -2,6 +2,8 @@
 import { h, Fragment } from "preact";
 import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import TimeSincePub from "../components/TimeSincePub.tsx";
+import LinkFooter from "../components/LinkFooter.tsx";
 
 export const handler: Handlers<Project> = {
   async GET(__req, ctx) {
@@ -13,7 +15,7 @@ export const handler: Handlers<Project> = {
 }
 // TODO: border right on main container
 export default function Home(props: PageProps) {
-  console.log(props.data)
+  const currentDate = Date.now()
   const sliceLink = props.data.slice(0, 6);
 
   return (
@@ -55,28 +57,34 @@ export default function Home(props: PageProps) {
                 background-size: 100% 100%;
                 background-repeat: no-repeat;">
                   <ul class={tw`flex gap-1`}>
-                    {link.fields.type.map((type, index, arr) => {
-                      console.log(type, index === arr.length - 1);
+                    {link.fields.tag.map((tag, index, arr) => {
                       return index === arr.length - 1 
-                      ? <li class={tw`uppercase text-xs font-extrabold text-[#2D67BE] mb-4`}>{type}</li> 
-                      : <li class={tw`uppercase text-xs font-extrabold text-[#2D67BE] mb-4`}>{type},</li>
+                      ? <li class={tw`uppercase text-xs font-extrabold text-[#2D67BE] mb-4`}>{tag}</li> 
+                      : <li class={tw`uppercase text-xs font-extrabold text-[#2D67BE] mb-4`}>{tag},</li>
                     })}
                   </ul>
                   <h3 class={tw`text-2xl text-gray-800 mb-2`}>{link.fields.linkTitle}</h3>
-                  <a class={tw`text-xs uppercase mb-2 inline-block hover:underline`} href={link.fields.authorUrl}>by {link.fields.author}</a>
+                  <ul class={tw`mb-2 flex gap-2 text-gray-500`}>
+                    <li class={tw`text-xs uppercase`}>
+                      by <a class={tw`hover:underline hover:text-gray-800`} href={link.fields.authorUrl}> {link.fields.author},</a>
+                    </li>
+                    <li class={tw`text-xs uppercase`}>
+                      <p><TimeSincePub start={link.fields.age} end={currentDate}/></p>
+                    </li>
+                  </ul>
                   <p class={tw`text-gray-500 mb-4`}>{link.fields.linkDesc}</p>
-                  <a class={tw`underline`} href={link.fields.linkUrl}>Download</a>
+                  <LinkFooter linkType={link.fields.linkType} linkUrl={link.fields.linkUrl}/>
                 </article>
               )
             })}
-            <a href="/all-links" class={tw`grow w-full border-4 border-gray-900 py-6 flex justify-center cursor-pointer bg-[#fafafa] hover:bg-white`}>
+            <a href="/all-links" class={tw`grow w-full border-4 border-r-0 border-gray-900 py-6 flex justify-center cursor-pointer bg-[#fafafa] hover:bg-white`}>
               <span class={tw`underline text-2xl`}>Browse All</span>
             </a>  
           </div>
         </section>
       </main>
       <footer class={tw`flex justify-center w-full py-12 bg-[#FFFCF2]`}>
-        <p class={tw`max-w-5xl mx-auto`}><span class={tw`uppercase`}>FigmaLinks</span> is maintained by <a class={tw`underline`} href="https://realtinypenguin.com">Brian Hinton</a>.</p>
+        <p class={tw`max-w-5xl mx-auto`}><span class={tw`uppercase font-bold`}>FigmaLinks</span> is maintained by <a class={tw`underline`} href="https://realtinypenguin.com">Brian Hinton</a>.</p>
       </footer>
     </Fragment>
   );
