@@ -5,6 +5,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import TimeSincePub from "../components/TimeSincePub.tsx";
 import LinkFooter from "../components/LinkFooter.tsx";
 import { Dbjson } from "dbjson";
+import "https://deno.land/std@0.146.0/dotenv/load.ts";
 
 // this is a temporary hack to get the current date for a generated hash for a new db.json file
 const today = Date.now();
@@ -16,9 +17,8 @@ const generatedDate = day + month + year;
 
 export const handler: Handlers<Project> = {
   async GET(__req, ctx) {
-    const rawLinks = fetch("");
+    const rawLinks = fetch(`${Deno.env.get("URL")}${Deno.env.get("DATA")}?api_key=${Deno.env.get("API")}`);
     const links = await (await rawLinks).json()
-    
     // set the relative path of the json
     const dbjson = new Dbjson(`./db/db-${generatedDate}.json`, `link`); 
 

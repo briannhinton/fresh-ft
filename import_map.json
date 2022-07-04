@@ -7,6 +7,7 @@
     "@twind": "./utils/twind.ts",
     "twind": "https://esm.sh/twind@0.16.17",
     "twind/": "https://esm.sh/twind@0.16.17/",
-    "dbjson": "https://deno.land/x/dbjson@v1.2.0/mod.ts"
+    "dbjson": "https://deno.land/x/dbjson@v1.2.0/mod.ts",
+    "loadenv": "https://deno.land/x/dotenv/load.ts"
   }
 }
