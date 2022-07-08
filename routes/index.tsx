@@ -3,9 +3,8 @@ import { h, Fragment } from "preact";
 import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 
-import TimeSincePub from "../components/TimeSincePub.tsx";
-import LinkFooter from "../components/LinkFooter.tsx";
 import Nav from "../components/Nav.tsx";
+import LinkCard from "../components/LinkCard.tsx";
 import Footer from "../components/Footer.tsx";
 
 import { Dbjson } from "dbjson";
@@ -61,35 +60,22 @@ export default function Home(props: PageProps) {
           <p class={tw`uppercase text-xs mb-4`}>
             Last updated <time dateTime="2022-07-04T19:00">July 4, 2022</time>.</p>
           <div class={tw`w-full flex flex-wrap overflow-hidden border-r-4 border-gray-900`}>
-            {sliceLink.map(link => {
-              return (
-                <article class={tw`border-4 border-gray-900 px-6 pt-9 pb-12 -mr-1 -mb-1 w-full sm:w-[calc(50%+0.25rem)] lg:w-[calc(33.333333%+0.25rem)]`} data-key={link.id}
-                style="background: url('/cornertone.png'), #fafafa;
-                background-position: top left;
-                background-size: 100% 100%;
-                background-repeat: no-repeat;">
-                  <ul class={tw`flex gap-1`}>
-                    {link.fields.tag.map((tag: string, index: number, arr: string) => {
-                      return index === arr.length - 1 
-                      ? <li class={tw`uppercase text-xs font-extrabold text-[#2D67BE] mb-4`}>{tag}</li> 
-                      : <li class={tw`uppercase text-xs font-extrabold text-[#2D67BE] mb-4`}>{tag},</li>
-                    })}
-                  </ul>
-                  <h3 class={tw`text-2xl text-gray-800 mb-2`}>{link.fields.linkTitle}</h3>
-                  <div class={tw`mb-2 text-xs text-gray-500`}>
-                    <p class={tw`text-xs`}>
-                      by <a class={tw`hover:underline hover:text-gray-800`} href={link.fields.authorUrl}> {link.fields.author}</a>
-                    </p>
-                    <p><TimeSincePub start={link.fields.age}/></p>
-                  </div>
-                  <p class={tw`text-gray-500 mb-4`}>{link.fields.linkDesc}</p>
-                  <LinkFooter linkType={link.fields.linkType} linkUrl={link.fields.linkUrl}/>
-                </article>
-              )
-            })}
-            <a href="/all-links" class={tw`grow w-full border-4 border-r-0 border-gray-900 py-6 flex justify-center cursor-pointer bg-[#fafafa] hover:bg-white`}>
-              <span class={tw`underline text-2xl`}>Browse All</span>
-            </a>  
+          {sliceLink.map( (link, index ) => 
+            <LinkCard
+            id={link.id}
+            tags={link.fields.tag}
+            linkTitle={link.fields.linkTitle}
+            authorUrl={link.fields.authorUrl}
+            author={link.fields.author}
+            age={link.fields.age}
+            linkDesc={link.fields.linkDesc}
+            linkType={link.fields.linkType}
+            linkUrl={link.fields.linkUrl}
+            />
+          )}
+          <a href="/links" class={tw`grow w-full border-4 border-r-0 border-gray-900 py-6 flex justify-center cursor-pointer bg-[#fafafa] hover:bg-white`}>
+            <span class={tw`underline text-2xl`}>Browse All</span>
+          </a>  
           </div>
         </section>
       </main>
