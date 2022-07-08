@@ -1,0 +1,157 @@
+{
+    "link": {
+        "records": [
+            {
+                "id": "rec8yZpXLCL0Kp6L2",
+                "createdTime": "2022-07-02T15:45:51.000Z",
+                "fields": {
+                    "linkTitle": "Config 2022 Opening Keynote",
+                    "author": "Dylan Field",
+                    "authorUrl": "https://twitter.com/zoink?s=21&t=3S0GTu023_JanLjqGwG5tg",
+                    "tag": [
+                        "Config 2022",
+                        "Keynote"
+                    ],
+                    "linkDesc": "Figma CEO Dylan kicked off Config 2022 with opening remarks and the launch of 15 new features.",
+                    "linkUrl": "https://youtu.be/JUTFghsG8nI",
+                    "age": "2022-05-10",
+                    "linkType": "video"
+                }
+            },
+            {
+                "id": "recCliSnfBhRzXImC",
+                "createdTime": "2022-07-08T14:24:01.000Z",
+                "fields": {
+                    "linkTitle": "Everything you need to know about spacing & layout grids",
+                    "author": "Molly Hellmuth",
+                    "authorUrl": "https://twitter.com/molly_hellmuth",
+                    "tag": [
+                        "Beginner",
+                        "Layout"
+                    ],
+                    "linkDesc": "This guide will walk though spacing and layout grid best practices based on Material Design, Bootstrap, and Figma.",
+                    "linkUrl": "https://www.uiprep.com/blog/everything-you-need-to-know-about-spacing-layout-grids",
+                    "age": "2020-01-11",
+                    "linkType": "article"
+                }
+            },
+            {
+                "id": "recEVAyBh1iAw2HhQ",
+                "createdTime": "2022-07-02T15:49:20.000Z",
+                "fields": {
+                    "linkTitle": "In the File: Designing for autonomous vehicles",
+                    "author": "Justin Barber",
+                    "authorUrl": "https://twitter.com/jstnbrbr?s=21&t=3S0GTu023_JanLjqGwG5tg",
+                    "tag": [
+                        "Intermediate",
+                        "User Experience"
+                    ],
+                    "linkDesc": "Learn how designers at Applied Intuition balance the inherent complexity of the AV development process with simple UX solutions that span both 2D and 3D spaces.",
+                    "linkUrl": "https://youtu.be/TgE2m76cre8",
+                    "age": "2022-06-23",
+                    "linkType": "video"
+                }
+            },
+            {
+                "id": "recJb8FflQV7TDFhS",
+                "createdTime": "2022-07-02T15:57:53.000Z",
+                "fields": {
+                    "linkTitle": "Digital design is now a real job",
+                    "author": "Andrew Hogan",
+                    "authorUrl": "https://twitter.com/ahogan?s=21&t=3S0GTu023_JanLjqGwG5tg",
+                    "tag": [
+                        "Industry"
+                    ],
+                    "linkDesc": "This year the U.S. Bureau of Labor Statistics decided digital design is a job.",
+                    "linkUrl": "https://www.figma.com/blog/digital-design-is-now-a-real-job/",
+                    "age": "2022-06-30",
+                    "linkType": "article"
+                }
+            },
+            {
+                "id": "recgBJJwrecK5qa2a",
+                "createdTime": "2022-07-02T15:40:50.000Z",
+                "fields": {
+                    "linkTitle": "How To Easily Build And Support Tables In Figma",
+                    "author": "Andrii Zhdan",
+                    "authorUrl": "https://andrew-zhdan.medium.com/",
+                    "tag": [
+                        "Intermediate",
+                        "Tables"
+                    ],
+                    "linkDesc": "In this article, Andrii shares his approach to managing tables in Figma with a bit less pain.",
+                    "linkUrl": "https://www.smashingmagazine.com/2022/06/easy-build-support-tables-figma/",
+                    "age": "2022-06-17",
+                    "linkType": "article"
+                }
+            },
+            {
+                "id": "recjSthIqnhbXnkZD",
+                "createdTime": "2022-07-02T16:07:04.000Z",
+                "fields": {
+                    "linkTitle": "Demystifying plugin development",
+                    "author": "Gavin McFarland",
+                    "authorUrl": "https://twitter.com/gavinmcfarland?s=21&t=3S0GTu023_JanLjqGwG5tg",
+                    "tag": [
+                        "Plugin",
+                        "Config 2022"
+                    ],
+                    "linkDesc": "Gavin will help you get past the mental and physical blockers that might be stopping you from building your own plugin.",
+                    "linkUrl": "https://youtu.be/L-WkcC0_kgE",
+                    "age": "2022-05-19",
+                    "linkType": "video"
+                }
+            },
+            {
+                "id": "recsvEfobWrfNiQqb",
+                "createdTime": "2022-07-02T14:46:49.000Z",
+                "fields": {
+                    "linkTitle": "How to make your Figma components easier to use",
+                    "author": "Alex Zlatkus",
+                    "authorUrl": "https://zlatkus-alex.medium.com/about",
+                    "tag": [
+                        "Components",
+                        "Intermediate"
+                    ],
+                    "linkDesc": "What you can do to optimize the UX for component consumers.",
+                    "linkUrl": "https://uxdesign.cc/how-to-make-your-figma-components-easier-to-use-9c4efd88a5cc",
+                    "age": "2022-06-21",
+                    "linkType": "article"
+                }
+            },
+            {
+                "id": "recvF4I7kIzZw9NxP",
+                "createdTime": "2022-07-02T16:02:18.000Z",
+                "fields": {
+                    "linkTitle": "Node Decoder",
+                    "author": "Gavin McFarland",
+                    "authorUrl": "https://twitter.com/gavinmcfarland?s=21&t=3S0GTu023_JanLjqGwG5tg",
+                    "tag": [
+                        "Plugin",
+                        "Advanced"
+                    ],
+                    "linkDesc": "Node Decoder generates plugin or widget source code from any Figma design as Javascript and JSX. Useful for avoiding the need to code visual assets manually when developing plugins.",
+                    "linkUrl": "https://www.figma.com/community/plugin/933372797518031971/Node-Decoder",
+                    "linkType": "file"
+                }
+            },
+            {
+                "id": "recvPr5RYgs1dORcj",
+                "createdTime": "2022-07-02T20:40:10.000Z",
+                "fields": {
+                    "linkTitle": "Figma tutorial for Beginners: Complete Website from Start to Finish",
+                    "author": "Ran Segall",
+                    "authorUrl": "http://ransegall.com",
+                    "tag": [
+                        "Beginner",
+                        "Website"
+                    ],
+                    "linkDesc": "Ran shares a Figma Tutorial with you guys, where he'll builds a website.",
+                    "linkUrl": "https://www.youtube.com/watch?v=HZuk6Wkx_Eg",
+                    "age": "2022-05-20",
+                    "linkType": "video"
+                }
+            }
+        ]
+    }
+}

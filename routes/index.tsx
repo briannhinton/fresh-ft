@@ -2,8 +2,12 @@
 import { h, Fragment } from "preact";
 import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
+
 import TimeSincePub from "../components/TimeSincePub.tsx";
 import LinkFooter from "../components/LinkFooter.tsx";
+import Nav from "../components/Nav.tsx";
+import Footer from "../components/Footer.tsx";
+
 import { Dbjson } from "dbjson";
 import "https://deno.land/std@0.146.0/dotenv/load.ts";
 
@@ -15,7 +19,7 @@ const month = (date.getMonth() + 1).toString();
 const year = date.getFullYear();
 const generatedDate = day + month + year;
 
-export const handler: Handlers<Project> = {
+export const handler: Handlers = {
   async GET(__req, ctx) {
     const rawLinks = fetch(`${Deno.env.get("URL")}${Deno.env.get("DATA")}?api_key=${Deno.env.get("API")}`);
     const links = await (await rawLinks).json()
@@ -29,24 +33,16 @@ export const handler: Handlers<Project> = {
   }
 }
 
-// TODO: border right on main container
 export default function Home(props: PageProps) {
-  const currentDate = Date.now()
   const sliceLink = props.data.slice(0, 6);
+  console.log(sliceLink)
 
   return (
     <Fragment>
       <div class={tw`w-full border-gray-900 border-b-4`}
       style="background: url('/halftone.png'), #FFF2CC;
       background-repeat: repeat;">
-        <nav class={tw`pt-8 mb-24 max-w-5xl mx-auto flex justify-between`}>
-          <h1 class={tw`uppercase text-2xl font-bold`}>FigmaLinks</h1>
-          <ul class={tw`flex gap-x-8 uppercase`}>
-            <li><a href="/" aria-current="page" class={tw`font-bold hover:underline`}>Home</a></li>
-            <li><a href="/all-links" class={tw`hover:underline`}>All Links</a></li>
-          </ul>
-          <p class={tw`hidden sm:inline-block`}>Made with <span class={tw`sr-only`}>love</span> <img src="/icon-heart.svg" class={tw`w-6 h-6 inline`} alt=""/> in Florida.</p>
-        </nav>
+        <Nav />
         <section class={tw`max-w-5xl mx-auto flex mb-20`}>
           <div>
           <h2 class={tw`my-6 text-6xl max-w-md`}>
@@ -73,21 +69,19 @@ export default function Home(props: PageProps) {
                 background-size: 100% 100%;
                 background-repeat: no-repeat;">
                   <ul class={tw`flex gap-1`}>
-                    {link.fields.tag.map((tag, index, arr) => {
+                    {link.fields.tag.map((tag: string, index: number, arr: string) => {
                       return index === arr.length - 1 
                       ? <li class={tw`uppercase text-xs font-extrabold text-[#2D67BE] mb-4`}>{tag}</li> 
                       : <li class={tw`uppercase text-xs font-extrabold text-[#2D67BE] mb-4`}>{tag},</li>
                     })}
                   </ul>
                   <h3 class={tw`text-2xl text-gray-800 mb-2`}>{link.fields.linkTitle}</h3>
-                  <ul class={tw`mb-2 flex gap-2 text-gray-500`}>
-                    <li class={tw`text-xs uppercase`}>
-                      by <a class={tw`hover:underline hover:text-gray-800`} href={link.fields.authorUrl}> {link.fields.author},</a>
-                    </li>
-                    <li class={tw`text-xs uppercase`}>
-                      <p><TimeSincePub start={link.fields.age} end={currentDate}/></p>
-                    </li>
-                  </ul>
+                  <div class={tw`mb-2 text-xs text-gray-500`}>
+                    <p class={tw`text-xs`}>
+                      by <a class={tw`hover:underline hover:text-gray-800`} href={link.fields.authorUrl}> {link.fields.author}</a>
+                    </p>
+                    <p><TimeSincePub start={link.fields.age}/></p>
+                  </div>
                   <p class={tw`text-gray-500 mb-4`}>{link.fields.linkDesc}</p>
                   <LinkFooter linkType={link.fields.linkType} linkUrl={link.fields.linkUrl}/>
                 </article>
@@ -99,9 +93,7 @@ export default function Home(props: PageProps) {
           </div>
         </section>
       </main>
-      <footer class={tw`flex justify-center w-full py-12 bg-[#FFFCF2]`}>
-        <p class={tw`max-w-5xl mx-auto`}><span class={tw`uppercase font-bold`}>FigmaLinks</span> is maintained by <a class={tw`underline`} href="https://realtinypenguin.com">Brian Hinton</a>.</p>
-      </footer>
+      <Footer />
     </Fragment>
   );
 }

@@ -3,7 +3,12 @@ import { h, Fragment } from "preact";
 import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 
-export const handler: Handlers<Project> = {
+import TimeSincePub from "../components/TimeSincePub.tsx";
+import LinkFooter from "../components/LinkFooter.tsx";
+import Nav from "../components/Nav.tsx";
+import Footer from "../components/Footer.tsx";
+
+export const handler: Handlers = {
   async GET(__req, ctx) {
     const rawLinks = fetch("");
     const links = await (await rawLinks).json()
@@ -17,14 +22,7 @@ export default function Home(props: PageProps) {
   return (
     <Fragment>
       <div class={tw`w-full bg-[#FFFCF2]`}>
-        <nav class={tw`pt-8 max-w-5xl mx-auto flex justify-between`}>
-          <h1 class={tw`uppercase text-2xl font-bold`}>FigmaLinks</h1>
-          <ul class={tw`flex gap-x-8 uppercase`}>
-            <li><a href="/" class={tw`hover:underline`}>Home</a></li>
-            <li><a href="/" aria-current="page" class={tw`font-bold hover:underline`}>All Links</a></li>
-          </ul>
-          <p class={tw`hidden sm:inline-block`}>Made with <span class={tw`sr-only`}>love</span> <img src="/icon-heart.svg" class={tw`w-6 h-6 inline`} alt=""/> in Florida.</p>
-        </nav>
+        <Nav />
       </div>
       <main class={tw`w-full pt-20 bg-[#FFFCF2]`}>
         <section class={tw`max-w-5xl mx-auto`}>
@@ -50,9 +48,7 @@ export default function Home(props: PageProps) {
           </div>
         </section>
       </main>
-      <footer class={tw`flex justify-center w-full py-12 bg-[#FFFCF2]`}>
-        <p class={tw`max-w-5xl mx-auto`}><span class={tw`uppercase`}>FigmaLinks</span> is maintained by <a class={tw`underline`} href="https://realtinypenguin.com">Brian Hinton</a>.</p>
-      </footer>
+      <Footer />
     </Fragment>
   );
 }
