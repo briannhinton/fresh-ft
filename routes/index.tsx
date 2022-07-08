@@ -60,7 +60,7 @@ export default function Home(props: PageProps) {
           <p class={tw`uppercase text-xs mb-4`}>
             Last updated <time dateTime="2022-07-04T19:00">July 4, 2022</time>.</p>
           <div class={tw`w-full flex flex-wrap overflow-hidden border-r-4 border-gray-900`}>
-          {sliceLink.map( (link, index ) => 
+          {sliceLink.map( (link) => 
             <LinkCard
             id={link.id}
             tags={link.fields.tag}

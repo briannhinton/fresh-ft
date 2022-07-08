@@ -3,11 +3,6 @@ import { h, Fragment } from "preact";
 import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 
-import TimeSincePub from "../components/TimeSincePub.tsx";
-import LinkFooter from "../components/LinkFooter.tsx";
-import Nav from "../components/Nav.tsx";
-import Footer from "../components/Footer.tsx";
-
 import { Dbjson } from "dbjson";
 import "https://deno.land/std@0.146.0/dotenv/load.ts";
 

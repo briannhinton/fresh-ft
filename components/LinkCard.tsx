@@ -4,7 +4,19 @@ import { tw } from "@twind";
 import TimeSincePub from "../components/TimeSincePub.tsx";
 import LinkFooter from "../components/LinkFooter.tsx";
 
-export default function LinkCard ({ tags, linkTitle, authorUrl, author, age, linkType, linkDesc, linkUrl, id }) {
+export interface LinkCardProps {
+  id: string;
+  tags: any;
+  authorUrl: string;
+  age: string;
+  author: string;
+  linkTitle: string;
+  linkType: string
+  linkDesc: string;
+  linkUrl: string;
+}
+
+export default function LinkCard ({ tags, linkTitle, authorUrl, author, age, linkType, linkDesc, linkUrl, id } : LinkCardProps) {
   return (
   <article class={tw`border-4 border-gray-900 px-6 pt-9 pb-12 -mr-1 -mb-1 w-full sm:w-[calc(50%+0.25rem)] lg:w-[calc(33.333333%+0.25rem)]`} data-key={id}
   style="background: url('/cornertone.png'), #fafafa;
