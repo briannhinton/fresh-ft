@@ -2,7 +2,7 @@ import { Dbjson } from "dbjson";
 import "https://deno.land/std@0.146.0/dotenv/load.ts";
 
 import Hash from "./hash.ts";
-
+// TODO: update export json info
 export default async function ExportJson() {
   const currentHash = Hash();
   const rawLinks = fetch(`${Deno.env.get("URL")}${Deno.env.get("DATA")}?api_key=${Deno.env.get("API")}`);
