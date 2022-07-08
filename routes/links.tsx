@@ -6,18 +6,20 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import Nav from "../components/Nav.tsx";
 import LinkCard from "../components/LinkCard.tsx";
 import Footer from "../components/Footer.tsx";
-
+import Hash from "../utils/hash.ts";
+// todo: clean up
+// check if exists and if not trigger building new data object
+// check how many exist, and if > 2 exist remove older
 export const handler: Handlers = {
-  async GET(__req, ctx) {
-    const rawLinks = fetch(`${Deno.env.get("URL")}${Deno.env.get("DATA")}?api_key=${Deno.env.get("API")}`);
-    const links = await (await rawLinks).json()
-
-    return ctx.render(links.records);
+  
+  async GET(_req, ctx) {
+    const rawLinks = await Deno.readTextFile(`data/data-${Hash()}.json`);
+    const allLinks = JSON.parse(rawLinks).links;
+    return ctx.render(allLinks.records);
   }
 }
 
-export default function Home(props: PageProps) {
-
+export default function Links(props: PageProps) {
   return (
     <Fragment>
       <div class={tw`w-full bg-[#FFFCF2]`}>
